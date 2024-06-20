@@ -1,7 +1,9 @@
 package com.vnpt.web.rest;
 
 import com.vnpt.service.UserService;
+import com.vnpt.web.rest.request.CreateUserRequest;
 import com.vnpt.web.rest.request.GetListUserRequest;
+import com.vnpt.web.rest.request.UpdateUserRequest;
 import com.vnpt.web.rest.response.BaseResponse;
 import com.vnpt.web.rest.response.GetDetailUserResponse;
 import com.vnpt.web.rest.response.GetListUserResponse;
@@ -34,5 +36,13 @@ public class UserResource {
         return userService.deleteUser(id);
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<BaseResponse<GetDetailUserResponse>> createUser(@RequestBody CreateUserRequest request){
+        return userService.createUser(request);
+    }
 
+    @PostMapping("/update")
+    public ResponseEntity<BaseResponse<GetDetailUserResponse>> update(@RequestBody UpdateUserRequest request){
+        return userService.updateUser(request);
+    }
 }

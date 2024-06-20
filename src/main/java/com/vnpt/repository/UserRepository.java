@@ -14,6 +14,8 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserEntity, String> {
     UserEntity findByEmail(String email);
 
+    UserEntity findByUsername(String username);
+
     @Query(value = "SELECT u FROM UserEntity u " +
         "WHERE ( :keySearch is null or u.username like :keySearch ) " +
         "OR ( :keySearch is null or u.fullName like :keySearch )")
