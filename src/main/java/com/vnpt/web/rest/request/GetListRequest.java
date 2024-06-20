@@ -1,6 +1,6 @@
 package com.vnpt.web.rest.request;
 
-public class GetListUserRequest {
+public class GetListRequest {
 
     private String searchKey;
 

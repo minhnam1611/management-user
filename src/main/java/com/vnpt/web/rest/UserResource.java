@@ -2,7 +2,7 @@ package com.vnpt.web.rest;
 
 import com.vnpt.service.UserService;
 import com.vnpt.web.rest.request.CreateUserRequest;
-import com.vnpt.web.rest.request.GetListUserRequest;
+import com.vnpt.web.rest.request.GetListRequest;
 import com.vnpt.web.rest.request.UpdateUserRequest;
 import com.vnpt.web.rest.response.BaseResponse;
 import com.vnpt.web.rest.response.GetDetailUserResponse;
@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/api/user")
 public class UserResource {
+
+    private final int PAGE_SIZE = 5;
+
     @Autowired
     private UserService userService;
 
     @PostMapping("/users-list")
-    public ResponseEntity<BaseResponse<GetListUserResponse>> getAllUsers(@RequestBody GetListUserRequest request) {
-        Pageable pageable = PageRequest.of(request.getPageNumber(), 5 );
+    public ResponseEntity<BaseResponse<GetListUserResponse>> getAllUsers(@RequestBody GetListRequest request) {
+        Pageable pageable = PageRequest.of(request.getPageNumber(), PAGE_SIZE );
         return userService.getListUser(request,pageable);
     }
 

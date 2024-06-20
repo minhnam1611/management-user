@@ -28,6 +28,9 @@ public class RoleEntity  extends BaseEntity<String> implements Serializable {
     @Column(name = "desc", length = 250)
     private String desc;
 
+    @Column(name = "status", length = 250)
+    private String status;
+
     @Override
     public String getId() {
         return id;
@@ -55,6 +58,14 @@ public class RoleEntity  extends BaseEntity<String> implements Serializable {
 
     public String getDesc() {
         return desc;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setDesc(String desc) {

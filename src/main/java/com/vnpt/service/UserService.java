@@ -2,7 +2,6 @@ package com.vnpt.service;
 
 import com.vnpt.constans.Constansts;
 import com.vnpt.constans.UserContansts;
-import com.vnpt.entity.RoleEntity;
 import com.vnpt.entity.UserEntity;
 import com.vnpt.entity.UserRoleRelEntity;
 import com.vnpt.repository.RoleRepository;
@@ -10,7 +9,7 @@ import com.vnpt.repository.UserRepository;
 import com.vnpt.repository.UserRoleRelRepository;
 import com.vnpt.service.dto.AccountDetail;
 import com.vnpt.web.rest.request.CreateUserRequest;
-import com.vnpt.web.rest.request.GetListUserRequest;
+import com.vnpt.web.rest.request.GetListRequest;
 import com.vnpt.web.rest.request.UpdateUserRequest;
 import com.vnpt.web.rest.response.BaseResponse;
 import com.vnpt.web.rest.response.GetDetailUserResponse;
@@ -55,7 +54,7 @@ public class UserService implements UserDetailsService {
         return user == null ? null : new AccountDetail(user, lstPers);
     }
 
-    public ResponseEntity<BaseResponse<GetListUserResponse>> getListUser(GetListUserRequest request, Pageable pageable){
+    public ResponseEntity<BaseResponse<GetListUserResponse>> getListUser(GetListRequest request, Pageable pageable){
         GetListUserResponse data = new GetListUserResponse();
         String keySearch = "";
         if(request.getSearchKey().equals("")){
