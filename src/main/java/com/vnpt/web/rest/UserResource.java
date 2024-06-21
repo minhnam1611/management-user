@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserResource {
 
-    private final int PAGE_SIZE = 5;
+    private final int PAGE_SIZE = 10;
 
     @Autowired
     private UserService userService;

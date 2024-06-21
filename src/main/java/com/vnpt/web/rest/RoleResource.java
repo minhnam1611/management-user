@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/role")
 public class RoleResource {
 
-    private final int PAGE_SIZE = 5;
+    private final int PAGE_SIZE = 10;
 
     @Autowired
     private RoleService roleService;

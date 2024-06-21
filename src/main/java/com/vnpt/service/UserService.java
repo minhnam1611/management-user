@@ -57,13 +57,17 @@ public class UserService implements UserDetailsService {
     public ResponseEntity<BaseResponse<GetListUserResponse>> getListUser(GetListRequest request, Pageable pageable){
         GetListUserResponse data = new GetListUserResponse();
         String keySearch = "";
-        if(request.getSearchKey().equals("")){
+        if(request.getSearchKey() == null || request.getSearchKey().equals("")){
             keySearch = null;
         }else {
             keySearch = "%" +request.getSearchKey()+ "%";
         }
         Page<UserEntity> listUser = userRepository.getListUser(keySearch, pageable);
-        data.setListUser(listUser);
+        data.setData(listUser.getContent());
+        data.setSizeOfPage(listUser.getSize());
+        data.setRecordsTotal(listUser.getTotalElements());
+        data.setRecordsFiltered((int) listUser.getTotalElements());
+        data.setTotalPages(listUser.getTotalPages());
 
         BaseResponse<GetListUserResponse> response = new BaseResponse<>();
         response.success(data);
