@@ -22,15 +22,14 @@ public class RoleResource {
     @Autowired
     private RoleService roleService;
 
-    @PostMapping("/role-list")
+    @PostMapping("/roles-list")
     public ResponseEntity<BaseResponse<GetListRoleResponse>> getAllUsers(@RequestBody GetListRequest request) {
-        Pageable pageable = PageRequest.of(request.getPageNumber(), PAGE_SIZE );
+        Pageable pageable = PageRequest.of(request.getPageNumber(), PAGE_SIZE);
         return roleService.getListRole(request, pageable);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BaseResponse<GetDetailRoleResponse>> getDetailRole(@PathVariable String id){
+    public ResponseEntity<BaseResponse<GetDetailRoleResponse>> getDetailRole(@PathVariable String id) {
         return roleService.getRoleDetail(id);
     }
-
 }
